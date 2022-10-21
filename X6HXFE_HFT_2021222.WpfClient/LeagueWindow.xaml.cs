@@ -22,6 +22,6 @@ namespace X6HXFE_HFT_2021222.WpfClient
         public LeagueWindow()
         {
             InitializeComponent();
-        }
+        }        
     }
 }

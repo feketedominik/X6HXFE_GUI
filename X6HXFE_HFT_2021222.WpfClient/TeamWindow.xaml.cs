@@ -23,5 +23,10 @@ namespace X6HXFE_HFT_2021222.WpfClient
         {
             InitializeComponent();
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

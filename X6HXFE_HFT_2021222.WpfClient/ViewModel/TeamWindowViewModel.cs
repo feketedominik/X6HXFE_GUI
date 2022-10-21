@@ -28,7 +28,10 @@ namespace X6HXFE_HFT_2021222.WpfClient.ViewModel
                     selectedTeam = new Team()
                     {
                         TeamId = value.TeamId,
-                        Name = value.Name
+                        Name = value.Name,                        
+                        headCoach = value.headCoach,
+                        Stadium = value.Stadium,
+                        Founded = value.Founded
                     };
                     OnPropertyChanged();
                     (DeleteTeamCommand as RelayCommand).NotifyCanExecuteChanged();
@@ -53,6 +56,19 @@ namespace X6HXFE_HFT_2021222.WpfClient.ViewModel
             if (!IsInDesignMode)
             {
                 Teams = new RestCollection<Team>("http://localhost:8739/", "team");
+
+                CreateTeamCommand = new RelayCommand(() =>
+                {
+                    Teams.Add(new Team
+                    {
+                        Name = "Teszt Team"
+                        
+                    });                    
+                });
+                UpdateTeamCommand = new RelayCommand(() =>
+                {
+                    Teams.Update(SelectedTeam);
+                });
                 DeleteTeamCommand = new RelayCommand(() =>
                 {
                       Teams.Delete(SelectedTeam.TeamId);
@@ -62,7 +78,7 @@ namespace X6HXFE_HFT_2021222.WpfClient.ViewModel
                     return SelectedTeam != null;
                 }
                 );
-                //SelectedTeam = new Team();
+                SelectedTeam = new Team();
             }
         }
     }

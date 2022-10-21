@@ -6,12 +6,13 @@
         xmlns:local="clr-namespace:X6HXFE_HFT_2021222.WpfClient"
         xmlns:vms="clr-namespace:X6HXFE_HFT_2021222.WpfClient.ViewModel"
         mc:Ignorable="d"
-        Title="Teams" Height="450" Width="800">
+        Title="Teams" Height="450" Width="800" Loaded="Window_Loaded">
     <Window.DataContext>
         <vms:TeamWindowViewModel/>
     </Window.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
@@ -24,7 +25,17 @@
         </ListBox>
         <StackPanel Grid.Column="1">
             <Label Content="Team Name" FontSize="14" Padding="10" HorizontalContentAlignment="Center" Background="LightBlue"/>
-            <TextBox Text="{Binding SelectedTeam.Name}" FontSize="14" Padding="10" Margin="0,0,0,30"/>
+            <TextBox Text="{Binding SelectedTeam.Name}" FontSize="14" Padding="10"/>
+            <Label Content="League" FontSize="14" Padding="10" HorizontalContentAlignment="Center" Background="LightBlue"/>            
+            <TextBox Text="{Binding SelectedTeam.League.Name}" FontSize="14" Padding="10"/>
+            <Label Content="Stadium" FontSize="14" Padding="10" HorizontalContentAlignment="Center" Background="LightBlue"/>
+            <TextBox Text="{Binding SelectedTeam.Stadium}" FontSize="14" Padding="10"/>
+            <Label Content="Head Coach" FontSize="14" Padding="10" HorizontalContentAlignment="Center" Background="LightBlue"/>
+            <TextBox Text="{Binding SelectedTeam.headCoach}" FontSize="14" Padding="10"/>
+            <Label Content="Founded" FontSize="14" Padding="10" HorizontalContentAlignment="Center" Background="LightBlue"/>
+            <TextBox Text="{Binding SelectedTeam.Founded}" FontSize="14" Padding="10"/>
+        </StackPanel>
+        <StackPanel Grid.Column="2" VerticalAlignment="Center">
             <Button Content="Create" Command="{Binding CreateTeamCommand}" FontSize="14" Padding="10" Margin="10"/>
             <Button Content="Update" Command="{Binding UpdateTeamCommand}" FontSize="14" Padding="10" Margin="10"/>
             <Button Content="Delete" Command="{Binding DeleteTeamCommand}" FontSize="14" Padding="10" Margin="10"/>
