@@ -5,8 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:X6HXFE_HFT_2021222.WpfClient"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Main Window" Height="320" Width="500">
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <Label Content="League Menu" FontSize="14" HorizontalContentAlignment="Center" Background="LightBlue" Padding="10"/>
+            <Button Content="Click" Click="Button_Click" FontSize="14" Padding="5" HorizontalContentAlignment="Center" BorderBrush="LightBlue" BorderThickness="2"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+            <Label Content="Team Menu" FontSize="14" HorizontalContentAlignment="Center" Background="LightBlue" Padding="10"/>
+            <Button Content="Click" Padding="5" FontSize="14" HorizontalContentAlignment="Center" BorderBrush="LightBlue" BorderThickness="2"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2">
+            <Label Content="Player Menu" FontSize="14" HorizontalContentAlignment="Center" Background="LightBlue" Padding="10"/>
+            <Button Content="Click" Padding="5" FontSize="14" HorizontalContentAlignment="Center" BorderBrush="LightBlue" BorderThickness="2"/>
+        </StackPanel>
+        <StackPanel Grid.Row="3">
+            <Label Content="Stats Menu" FontSize="14" HorizontalContentAlignment="Center" Background="LightBlue" Padding="10"/>
+            <Button Content="Click" Padding="5" FontSize="14" HorizontalContentAlignment="Center" BorderBrush="LightBlue" BorderThickness="2"/>
+        </StackPanel>
     </Grid>
 </Window>
