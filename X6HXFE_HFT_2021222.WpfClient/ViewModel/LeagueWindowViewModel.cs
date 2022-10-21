@@ -52,7 +52,7 @@ namespace X6HXFE_HFT_2021222.WpfClient.ViewModel
         {
             if (!IsInDesignMode)
             {
-                Leagues = new RestCollection<League>("http://localhost:8739/", "league");
+                Leagues = new RestCollection<League>("http://localhost:8739/", "league", "hub");
                 CreateLeagueCommand = new RelayCommand(() =>
                 {
                     Leagues.Add(new League

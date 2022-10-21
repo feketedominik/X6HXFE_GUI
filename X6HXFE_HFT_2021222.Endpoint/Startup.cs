@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using X6HXFE_HFT_2021222.Endpoint.Services;
 using X6HXFE_HFT_2021222.Logic;
 using X6HXFE_HFT_2021222.Logic.Classes;
 using X6HXFE_HFT_2021222.Logic.Interfaces;
@@ -34,6 +35,8 @@ namespace X6HXFE_HFT_2021222.Endpoint
             services.AddTransient<ILeagueLogic, LeagueLogic>();
             services.AddTransient<ITeamLogic, TeamLogic>();
             services.AddTransient<IPlayerLogic, PlayerLogic>();
+
+            services.AddSignalR();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -67,6 +70,7 @@ namespace X6HXFE_HFT_2021222.Endpoint
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<SignalRHub>("/hub");
             });
         }
     }
