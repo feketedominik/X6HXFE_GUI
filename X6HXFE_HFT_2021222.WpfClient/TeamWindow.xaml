@@ -1,0 +1,33 @@
+﻿<Window x:Class="X6HXFE_HFT_2021222.WpfClient.TeamWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:X6HXFE_HFT_2021222.WpfClient"
+        xmlns:vms="clr-namespace:X6HXFE_HFT_2021222.WpfClient.ViewModel"
+        mc:Ignorable="d"
+        Title="Teams" Height="450" Width="800">
+    <Window.DataContext>
+        <vms:TeamWindowViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <ListBox ItemsSource="{Binding Teams}" SelectedItem="{Binding SelectedTeam}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Label Content="{Binding Name}" FontSize="14"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <StackPanel Grid.Column="1">
+            <Label Content="Team Name" FontSize="14" Padding="10" HorizontalContentAlignment="Center" Background="LightBlue"/>
+            <TextBox Text="{Binding SelectedTeam.Name}" FontSize="14" Padding="10" Margin="0,0,0,30"/>
+            <Button Content="Create" Command="{Binding CreateTeamCommand}" FontSize="14" Padding="10" Margin="10"/>
+            <Button Content="Update" Command="{Binding UpdateTeamCommand}" FontSize="14" Padding="10" Margin="10"/>
+            <Button Content="Delete" Command="{Binding DeleteTeamCommand}" FontSize="14" Padding="10" Margin="10"/>
+        </StackPanel>
+    </Grid>
+</Window>
