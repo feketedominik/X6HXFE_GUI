@@ -15,8 +15,11 @@ namespace X6HXFE_HFT_2021222.WpfClient.ViewModel
     public class TeamWindowViewModel : ObservableRecipient
     {
         public RestCollection<Team> Teams { get; set; }
+        public RestCollection<League> Leagues { get; set; }
 
         private Team selectedTeam;
+        private League selectedLeague;
+        
 
         public Team SelectedTeam
         {
@@ -24,11 +27,12 @@ namespace X6HXFE_HFT_2021222.WpfClient.ViewModel
             set
             {
                 if (value != null)
-                {
+                {                    
                     selectedTeam = new Team()
                     {
                         TeamId = value.TeamId,
-                        Name = value.Name,                        
+                        LeagueId = selectedLeague.LeagueId,
+                        Name = value.Name,
                         headCoach = value.headCoach,
                         Stadium = value.Stadium,
                         Founded = value.Founded
@@ -36,6 +40,22 @@ namespace X6HXFE_HFT_2021222.WpfClient.ViewModel
                     OnPropertyChanged();
                     (DeleteTeamCommand as RelayCommand).NotifyCanExecuteChanged();
                     //(UpdateLeagueCommand as RelayCommand).NotifyCanExecuteChanged();
+                }
+            }
+        }
+        public League SelectedLeague
+        {
+            get { return selectedLeague; }
+            set
+            {
+                if (value != null)
+                {
+                    selectedLeague = new League()
+                    {
+                        Name = value.Name,
+                        LeagueId = value.LeagueId
+                    };                   
+                    OnPropertyChanged();                    
                 }
             }
         }
@@ -50,24 +70,28 @@ namespace X6HXFE_HFT_2021222.WpfClient.ViewModel
                 var prop = DesignerProperties.IsInDesignModeProperty;
                 return (bool)DependencyPropertyDescriptor.FromProperty(prop, typeof(FrameworkElement)).Metadata.DefaultValue;
             }
-        }
+        }        
         public TeamWindowViewModel()
         {
             if (!IsInDesignMode)
             {
                 Teams = new RestCollection<Team>("http://localhost:8739/", "team");
+                Leagues = new RestCollection<League>("http://localhost:8739/", "league");
 
                 CreateTeamCommand = new RelayCommand(() =>
-                {
+                {                    
                     Teams.Add(new Team
                     {
-                        Name = "Teszt Team"
-                        
-                    });                    
+                        Name = SelectedTeam.Name,                            
+                        LeagueId = SelectedLeague.LeagueId,
+                        Founded = SelectedTeam.Founded,
+                        headCoach = SelectedTeam.headCoach,
+                        Stadium = SelectedTeam.Stadium
+                    });
                 });
                 UpdateTeamCommand = new RelayCommand(() =>
                 {
-                    Teams.Update(SelectedTeam);
+                    Teams.Update(SelectedTeam);                    
                 });
                 DeleteTeamCommand = new RelayCommand(() =>
                 {

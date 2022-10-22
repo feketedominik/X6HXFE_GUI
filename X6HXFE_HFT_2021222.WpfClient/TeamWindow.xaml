@@ -26,8 +26,14 @@
         <StackPanel Grid.Column="1">
             <Label Content="Team Name" FontSize="14" Padding="10" HorizontalContentAlignment="Center" Background="LightBlue"/>
             <TextBox Text="{Binding SelectedTeam.Name}" FontSize="14" Padding="10"/>
-            <Label Content="League" FontSize="14" Padding="10" HorizontalContentAlignment="Center" Background="LightBlue"/>            
-            <TextBox Text="{Binding SelectedTeam.League.Name}" FontSize="14" Padding="10"/>
+            <Label Content="League" FontSize="14" Padding="10" HorizontalContentAlignment="Center" Background="LightBlue"/>
+            <ComboBox ItemsSource="{Binding Leagues}" SelectedItem="{Binding SelectedLeague}" FontSize="14" Padding="10">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
             <Label Content="Stadium" FontSize="14" Padding="10" HorizontalContentAlignment="Center" Background="LightBlue"/>
             <TextBox Text="{Binding SelectedTeam.Stadium}" FontSize="14" Padding="10"/>
             <Label Content="Head Coach" FontSize="14" Padding="10" HorizontalContentAlignment="Center" Background="LightBlue"/>

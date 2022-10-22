@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using X6HXFE_HFT_2021222.Models;
 
 namespace X6HXFE_HFT_2021222.WpfClient
 {
@@ -20,9 +21,11 @@ namespace X6HXFE_HFT_2021222.WpfClient
     /// </summary>
     public partial class MainWindow : Window
     {
+        public RestCollection<League> Leagues { get; set; }
         public MainWindow()
         {
             InitializeComponent();
+            Leagues = new RestCollection<League>("http://localhost:8739/", "league");
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
