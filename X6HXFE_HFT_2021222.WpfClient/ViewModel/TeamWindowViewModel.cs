@@ -20,18 +20,16 @@ namespace X6HXFE_HFT_2021222.WpfClient.ViewModel
         private Team selectedTeam;
         private League selectedLeague;
         
-
         public Team SelectedTeam
         {
             get { return selectedTeam; }
             set
             {
                 if (value != null)
-                {                    
+                {                                   
                     selectedTeam = new Team()
                     {
-                        TeamId = value.TeamId,
-                        LeagueId = selectedLeague.LeagueId,
+                        TeamId = value.TeamId,                        
                         Name = value.Name,
                         headCoach = value.headCoach,
                         Stadium = value.Stadium,
@@ -54,7 +52,8 @@ namespace X6HXFE_HFT_2021222.WpfClient.ViewModel
                     {
                         Name = value.Name,
                         LeagueId = value.LeagueId
-                    };                   
+                    };
+                    SelectedTeam.LeagueId = selectedLeague.LeagueId;
                     OnPropertyChanged();                    
                 }
             }
