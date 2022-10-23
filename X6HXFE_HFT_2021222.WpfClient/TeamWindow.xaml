@@ -27,7 +27,7 @@
             <Label Content="Team Name" FontSize="14" Padding="10" HorizontalContentAlignment="Center" Background="LightBlue"/>
             <TextBox Text="{Binding SelectedTeam.Name}" FontSize="14" Padding="10"/>
             <Label Content="League" FontSize="14" Padding="10" HorizontalContentAlignment="Center" Background="LightBlue"/>
-            <ComboBox ItemsSource="{Binding Leagues}" SelectedItem="{Binding SelectedLeague}" FontSize="14" Padding="10">
+            <ComboBox ItemsSource="{Binding Leagues}" SelectedItem="{Binding SelectedLeague}" SelectedIndex="{Binding SelectedTeam.LeagueId}" FontSize="14" Padding="10">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Name}"/>

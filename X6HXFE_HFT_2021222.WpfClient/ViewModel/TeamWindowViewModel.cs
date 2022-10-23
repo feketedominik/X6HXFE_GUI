@@ -26,18 +26,19 @@ namespace X6HXFE_HFT_2021222.WpfClient.ViewModel
             set
             {
                 if (value != null)
-                {                                   
+                {                    
                     selectedTeam = new Team()
                     {
                         TeamId = value.TeamId,                        
-                        Name = value.Name,
+                        Name = value.Name,                        
                         headCoach = value.headCoach,
                         Stadium = value.Stadium,
-                        Founded = value.Founded
-                    };
+                        Founded = value.Founded,
+                        LeagueId = value.LeagueId-1
+                    };                    
                     OnPropertyChanged();
                     (DeleteTeamCommand as RelayCommand).NotifyCanExecuteChanged();
-                    //(UpdateLeagueCommand as RelayCommand).NotifyCanExecuteChanged();
+                    (UpdateTeamCommand as RelayCommand).NotifyCanExecuteChanged();
                 }
             }
         }
