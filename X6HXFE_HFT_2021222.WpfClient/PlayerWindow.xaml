@@ -26,14 +26,20 @@
         <StackPanel Grid.Column="1">
             <Label Content="Player Name" FontSize="14" Padding="10" HorizontalContentAlignment="Center" Background="LightBlue"/>
             <TextBox Text="{Binding SelectedPlayer.Name}" FontSize="14" Padding="10"/>
+            <Label Content="Team" FontSize="14" Padding="10" HorizontalContentAlignment="Center" Background="LightBlue"/>
+            <ComboBox ItemsSource="{Binding Teams}" SelectedItem="{Binding SelectedTeam}" FontSize="14" Padding="10">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
             <Label Content="Born" FontSize="14" Padding="10" HorizontalContentAlignment="Center" Background="LightBlue"/>
             <TextBox Text="{Binding SelectedPlayer.Born}" FontSize="14" Padding="10"/>
             <Label Content="Nationality" FontSize="14" Padding="10" HorizontalContentAlignment="Center" Background="LightBlue"/>
             <TextBox Text="{Binding SelectedPlayer.Nationality}" FontSize="14" Padding="10"/>
             <Label Content="Position" FontSize="14" Padding="10" HorizontalContentAlignment="Center" Background="LightBlue"/>
-            <TextBox Text="{Binding SelectedPlayer.Position}" FontSize="14" Padding="10"/>            
-            <Label Content="Team" FontSize="14" Padding="10" HorizontalContentAlignment="Center" Background="LightBlue"/>
-            <ComboBox FontSize="14" Padding="10"/>
+            <TextBox Text="{Binding SelectedPlayer.Position}" FontSize="14" Padding="10"/>
         </StackPanel>
         <StackPanel Grid.Column="2" VerticalAlignment="Center">
             <Button Content="Create" Command="{Binding CreatePlayerCommand}" FontSize="14" Padding="10" Margin="10"/>
