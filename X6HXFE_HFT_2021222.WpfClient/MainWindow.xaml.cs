@@ -39,5 +39,11 @@ namespace X6HXFE_HFT_2021222.WpfClient
             TeamWindow tw = new TeamWindow();
             tw.ShowDialog();
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            PlayerWindow pw = new PlayerWindow();
+            pw.ShowDialog();
+        }
     }
 }

@@ -23,7 +23,7 @@
         </StackPanel>
         <StackPanel Grid.Row="2">
             <Label Content="Player Menu" FontSize="14" HorizontalContentAlignment="Center" Background="LightBlue" Padding="10"/>
-            <Button Content="Click" Padding="5" FontSize="14" HorizontalContentAlignment="Center" BorderBrush="LightBlue" BorderThickness="2"/>
+            <Button Content="Click" Click="Button_Click_2" Padding="5" FontSize="14" HorizontalContentAlignment="Center" BorderBrush="LightBlue" BorderThickness="2"/>
         </StackPanel>
         <StackPanel Grid.Row="3">
             <Label Content="Stats Menu" FontSize="14" HorizontalContentAlignment="Center" Background="LightBlue" Padding="10"/>
