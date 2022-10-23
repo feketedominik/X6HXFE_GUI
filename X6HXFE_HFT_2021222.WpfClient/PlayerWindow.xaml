@@ -4,37 +4,41 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:X6HXFE_HFT_2021222.WpfClient"
+        xmlns:vms="clr-namespace:X6HXFE_HFT_2021222.WpfClient.ViewModel"
         mc:Ignorable="d"
         Title="PlayerWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <vms:PlayerWindowViewModel/>
+    </Window.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <ListBox>
+        <ListBox ItemsSource="{Binding Players}" SelectedItem="{Binding SelectedPlayer}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Label Content="asd" FontSize="14"/>
+                    <Label Content="{Binding Name}" FontSize="14"/>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
         <StackPanel Grid.Column="1">
             <Label Content="Player Name" FontSize="14" Padding="10" HorizontalContentAlignment="Center" Background="LightBlue"/>
-            <TextBox Text="" FontSize="14" Padding="10"/>
+            <TextBox Text="{Binding SelectedPlayer.Name}" FontSize="14" Padding="10"/>
             <Label Content="Born" FontSize="14" Padding="10" HorizontalContentAlignment="Center" Background="LightBlue"/>
-            <TextBox Text="" FontSize="14" Padding="10"/>
+            <TextBox Text="{Binding SelectedPlayer.Born}" FontSize="14" Padding="10"/>
             <Label Content="Nationality" FontSize="14" Padding="10" HorizontalContentAlignment="Center" Background="LightBlue"/>
-            <TextBox Text="" FontSize="14" Padding="10"/>
+            <TextBox Text="{Binding SelectedPlayer.Nationality}" FontSize="14" Padding="10"/>
             <Label Content="Position" FontSize="14" Padding="10" HorizontalContentAlignment="Center" Background="LightBlue"/>
-            <TextBox Text="" FontSize="14" Padding="10"/>            
+            <TextBox Text="{Binding SelectedPlayer.Position}" FontSize="14" Padding="10"/>            
             <Label Content="Team" FontSize="14" Padding="10" HorizontalContentAlignment="Center" Background="LightBlue"/>
             <ComboBox FontSize="14" Padding="10"/>
         </StackPanel>
         <StackPanel Grid.Column="2" VerticalAlignment="Center">
-            <Button Content="Create" FontSize="14" Padding="10" Margin="10"/>
-            <Button Content="Update" FontSize="14" Padding="10" Margin="10"/>
-            <Button Content="Delete" FontSize="14" Padding="10" Margin="10"/>
+            <Button Content="Create" Command="{Binding CreatePlayerCommand}" FontSize="14" Padding="10" Margin="10"/>
+            <Button Content="Update" Command="{Binding UpdatePlayerCommand}" FontSize="14" Padding="10" Margin="10"/>
+            <Button Content="Delete" Command="{Binding DeletePlayerCommand}" FontSize="14" Padding="10" Margin="10"/>
         </StackPanel>
     </Grid>
 </Window>
