@@ -37,7 +37,7 @@ namespace X6HXFE_HFT_2021222.WpfClient.ViewModel
                     };
                     OnPropertyChanged();
                     (DeletePlayerCommand as RelayCommand).NotifyCanExecuteChanged();
-                    //(UpdatePlayerCommand as RelayCommand).NotifyCanExecuteChanged();
+                    (UpdatePlayerCommand as RelayCommand).NotifyCanExecuteChanged();
                 }
             }
         }
@@ -50,9 +50,11 @@ namespace X6HXFE_HFT_2021222.WpfClient.ViewModel
                 {
                     selectedTeam = new Team()
                     {
-                        TeamId = value.TeamId
+                        Name = value.Name,
+                        TeamId = value.TeamId,                        
                     };
                     SelectedPlayer.TeamId = selectedTeam.TeamId;
+                    SelectedPlayer.Team = selectedTeam;
                     OnPropertyChanged();
                 }
             }
@@ -78,9 +80,24 @@ namespace X6HXFE_HFT_2021222.WpfClient.ViewModel
 
                 CreatePlayerCommand = new RelayCommand(() =>
                 {
-                    Players.Add(SelectedPlayer);
+                    Players.Add(new Player()
+                    {
+                        Name = SelectedPlayer.Name,
+                        Born = SelectedPlayer.Born,
+                        Nationality = SelectedPlayer.Nationality,
+                        Position = SelectedPlayer.Position,
+                        TeamId = SelectedPlayer.TeamId
+                    });
                 });
-                
+                UpdatePlayerCommand = new RelayCommand(() =>
+                {
+                    Players.Update(SelectedPlayer);
+                },
+                () =>
+                {
+                    return SelectedPlayer != null;
+                }
+                );
                 DeletePlayerCommand = new RelayCommand(() =>
                 {
                     Players.Delete(SelectedPlayer.PlayerId);
