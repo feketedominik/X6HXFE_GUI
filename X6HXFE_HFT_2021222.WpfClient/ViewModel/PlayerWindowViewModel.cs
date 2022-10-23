@@ -19,6 +19,8 @@ namespace X6HXFE_HFT_2021222.WpfClient.ViewModel
 
         private Player selectedPlayer;
         private Team selectedTeam;
+
+        //TEAM KIVÁLASZTÁSA A COMBOBOX-BAN NEM TÖKÉLETES!!! 
         public Player SelectedPlayer
         {
             get { return selectedPlayer; }
