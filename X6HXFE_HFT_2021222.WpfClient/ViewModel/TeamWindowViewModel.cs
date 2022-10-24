@@ -19,6 +19,7 @@ namespace X6HXFE_HFT_2021222.WpfClient.ViewModel
 
         private Team selectedTeam;
         private League selectedLeague;
+        private int selectedTeamLeagueIndexToComboBox;
         
         public Team SelectedTeam
         {
@@ -26,20 +27,29 @@ namespace X6HXFE_HFT_2021222.WpfClient.ViewModel
             set
             {
                 if (value != null)
-                {                    
+                {
                     selectedTeam = new Team()
                     {
-                        TeamId = value.TeamId,                        
-                        Name = value.Name,                        
+                        TeamId = value.TeamId,
+                        Name = value.Name,
                         headCoach = value.headCoach,
                         Stadium = value.Stadium,
                         Founded = value.Founded,
-                        LeagueId = value.LeagueId-1
-                    };                    
+                        LeagueId = value.LeagueId
+                    };
+                    SelectedTeamLeagueIndexToComboBox = selectedTeam.LeagueId-1;
                     OnPropertyChanged();
                     (DeleteTeamCommand as RelayCommand).NotifyCanExecuteChanged();
                     (UpdateTeamCommand as RelayCommand).NotifyCanExecuteChanged();
                 }
+            }
+        }
+        public int SelectedTeamLeagueIndexToComboBox
+        {
+            get { return selectedTeamLeagueIndexToComboBox; }
+            set
+            {
+                SetProperty(ref selectedTeamLeagueIndexToComboBox, value);
             }
         }
         public League SelectedLeague
@@ -91,7 +101,7 @@ namespace X6HXFE_HFT_2021222.WpfClient.ViewModel
                 });
                 UpdateTeamCommand = new RelayCommand(() =>
                 {
-                    Teams.Update(SelectedTeam);                    
+                    Teams.Update(SelectedTeam);                 
                 });
                 DeleteTeamCommand = new RelayCommand(() =>
                 {

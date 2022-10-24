@@ -19,6 +19,7 @@ namespace X6HXFE_HFT_2021222.WpfClient.ViewModel
 
         private Player selectedPlayer;
         private Team selectedTeam;
+        private int selectedPlayerTeamIndexToComboBox;
 
         //TEAM KIVÁLASZTÁSA A COMBOBOX-BAN NEM TÖKÉLETES!!! 
         public Player SelectedPlayer
@@ -37,10 +38,19 @@ namespace X6HXFE_HFT_2021222.WpfClient.ViewModel
                         Position = value.Position,
                         TeamId = value.TeamId
                     };
+                    SelectedPlayerTeamIndexToComboBox = selectedPlayer.TeamId - 1;
                     OnPropertyChanged();
                     (DeletePlayerCommand as RelayCommand).NotifyCanExecuteChanged();
                     (UpdatePlayerCommand as RelayCommand).NotifyCanExecuteChanged();
                 }
+            }
+        }
+        public int SelectedPlayerTeamIndexToComboBox
+        {
+            get { return selectedPlayerTeamIndexToComboBox; }
+            set
+            {
+                SetProperty(ref selectedPlayerTeamIndexToComboBox, value);
             }
         }
         public Team SelectedTeam
