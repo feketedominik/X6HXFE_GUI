@@ -45,5 +45,11 @@ namespace X6HXFE_HFT_2021222.WpfClient
             PlayerWindow pw = new PlayerWindow();
             pw.ShowDialog();
         }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            StatisticsWindow sw = new StatisticsWindow();
+            sw.ShowDialog();
+        }
     }
 }
