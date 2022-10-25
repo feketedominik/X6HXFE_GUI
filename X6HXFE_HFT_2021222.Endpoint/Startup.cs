@@ -63,6 +63,13 @@ namespace X6HXFE_HFT_2021222.Endpoint
                 await context.Response.WriteAsJsonAsync(response);
             }));
 
+            app.UseCors(x => x
+            .AllowCredentials()
+            .AllowAnyMethod()
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .WithOrigins("http://localhost:40889"));
+
             app.UseRouting();
 
             app.UseAuthorization();
