@@ -8,17 +8,31 @@
 <body>
     <h1>League Catalog</h1>
 
+    <div id="formdiv">
+        <label>League Name</label>
+        <input type="text" id="leaguename" />
+        <button type="button" onclick="create()">Add League</button>
+    </div>
+
+    <div id="updateformdiv">
+        <label>League Name</label>
+        <input type="text" id="leaguenametoupdate" />
+        <button type="button" onclick="update()">Update League</button>
+    </div>
+
     <table>
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Name</th>
+                <th>Actions</th>
             </tr>
         </thead>
-        <tbody id="resultarea">            
+        <tbody id="resultarea">
         </tbody>
     </table>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
