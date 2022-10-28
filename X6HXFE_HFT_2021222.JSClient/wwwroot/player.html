@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Player UI</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <h1>Player Catalog</h1>
+
+    <div id="formdiv">
+        <label>Player Name</label>
+        <input type="text" id="playername" />
+        <label>Team</label>
+        <input type="text" id="playerteam" />
+        <label>Nationality</label>
+        <input type="text" id="playernationality" />
+        <label>Position</label>
+        <input type="text" id="playerposition" />
+        <label>Born</label>
+        <input type="date" id="playerborn" />
+        <button type="button" onclick="create()">Add Player</button>
+    </div>    
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Team ID</th>
+                <th>Nationality</th>
+                <th>Position</th>
+                <th>Born</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="resultarea">
+        </tbody>
+    </table>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="playerScript.js"></script>
+</body>
+</html>
