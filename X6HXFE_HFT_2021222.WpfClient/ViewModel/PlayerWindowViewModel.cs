@@ -86,8 +86,8 @@ namespace X6HXFE_HFT_2021222.WpfClient.ViewModel
         {
             if (!IsInDesignMode)
             {
-                Players = new RestCollection<Player>("http://localhost:8739/", "player");
-                Teams = new RestCollection<Team>("http://localhost:8739/", "team");
+                Players = new RestCollection<Player>("http://localhost:8739/", "player", "hub");
+                Teams = new RestCollection<Team>("http://localhost:8739/", "team", "hub");
 
                 CreatePlayerCommand = new RelayCommand(() =>
                 {
