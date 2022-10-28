@@ -15,9 +15,9 @@ function setupSignalR() {
     connection.on("PlayerCreated", (user, message) => {
         getdata();
     });
-    //connection.on("PlayerDeleted", (user, message) => {
-    //    getdata();
-    //});
+    connection.on("PlayerDeleted", (user, message) => {
+        getdata();
+    });
     //connection.on("PlayerUpdated", (user, message) => {
     //    getdata();
     //});
@@ -33,7 +33,7 @@ async function start() {
         await connection.start();
         console.log("SignalR Connected.");
     } catch (err) {
-        console.log(err);
+        //console.log(err);
         setTimeout(start, 5000);
     }
 };
@@ -61,7 +61,7 @@ function display() {
             + "</td></tr>";
     })
 }
-/*
+
 function remove(id) {
     fetch('http://localhost:8739/player/' + id, {
         method: 'DELETE',
@@ -77,18 +77,35 @@ function remove(id) {
 
 function showupdate(id) {
     document.getElementById('playernametoupdate').value = players.find(t => t['playerId'] == id)['name'];
+    document.getElementById('playerteamtoupdate').value = players.find(t => t['playerId'] == id)['teamId'];
+    document.getElementById('playernationalitytoupdate').value = players.find(t => t['playerId'] == id)['nationality'];
+    document.getElementById('playerpositiontoupdate').value = players.find(t => t['playerId'] == id)['position'];
+    document.getElementById('playerborntoupdate').value = players.find(t => t['playerId'] == id)['born'];
     document.getElementById('updateformdiv').style.display = 'flex';
+    document.getElementById('formdiv').style.display = 'none';
     playerIdToUpdate = id;
 }
 
 function update() {
     document.getElementById('updateformdiv').style.display = "none";
+    document.getElementById('formdiv').style.display = 'flex';
     let name = document.getElementById('playernametoupdate').value;
+    let teamid = document.getElementById('playerteamtoupdate').value;
+    let nationality = document.getElementById('playernationalitytoupdate').value;
+    let position = document.getElementById('playerpositiontoupdate').value;
+    let born = document.getElementById('playerborntoupdate').value;
     fetch('http://localhost:8739/player', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json', },
         body: JSON.stringify(
-            { name: name, playerId: playerIdToUpdate })
+            {
+                name: name,
+                playerId: playerIdToUpdate,
+                teamId: teamid,
+                nationality: nationality,
+                position: position,
+                born: born
+            })
     })
         .then(response => response)
         .then(data => {
@@ -97,7 +114,7 @@ function update() {
         })
         .catch((error) => { console.error('Error:', error); });
 }
-*/
+
 function create() {
     let name = document.getElementById('playername').value;
     let teamId = document.getElementById('playerteam').value;

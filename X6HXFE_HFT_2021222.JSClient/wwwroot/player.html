@@ -12,7 +12,7 @@
         <label>Player Name</label>
         <input type="text" id="playername" />
         <label>Team</label>
-        <input type="text" id="playerteam" />
+        <input type="number" min="1" value="0" id="playerteam" />
         <label>Nationality</label>
         <input type="text" id="playernationality" />
         <label>Position</label>
@@ -20,7 +20,21 @@
         <label>Born</label>
         <input type="date" id="playerborn" />
         <button type="button" onclick="create()">Add Player</button>
-    </div>    
+    </div>
+
+    <div id="updateformdiv">
+        <label>Player Name</label>
+        <input type="text" id="playernametoupdate" />
+        <label>Team</label>
+        <input type="text" id="playerteamtoupdate" />
+        <label>Nationality</label>
+        <input type="text" id="playernationalitytoupdate" />
+        <label>Position</label>
+        <input type="text" id="playerpositiontoupdate" />
+        <label>Born</label>
+        <input type="text" id="playerborntoupdate" />
+        <button type="button" onclick="update()">Update Team</button>
+    </div>
 
     <table>
         <thead>
