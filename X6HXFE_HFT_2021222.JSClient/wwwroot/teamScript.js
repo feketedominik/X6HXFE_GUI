@@ -109,11 +109,13 @@ function showupdate(id) {
     document.getElementById('teamheadcoachtoupdate').value = teams.find(t => t['teamId'] == id)['headCoach'];
     document.getElementById('teamfoundedtoupdate').value = teams.find(t => t['teamId'] == id)['founded'];
     document.getElementById('updateformdiv').style.display = 'flex';
+    document.getElementById('formdiv').style.display = 'none';
     teamIdToUpdate = id;
 }
 
 function update() {
     document.getElementById('updateformdiv').style.display = "none";
+    document.getElementById('formdiv').style.display = "flex";
     let name = document.getElementById('teamnametoupdate').value;
     let leagueId = document.getElementById('teamleaguetoupdate').value;
     let stadium = document.getElementById('teamstadiumtoupdate').value;
