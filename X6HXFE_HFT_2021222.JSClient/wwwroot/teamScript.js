@@ -28,11 +28,21 @@ function remove(id) {
 
 function create() {
     let name = document.getElementById('teamname').value;
+    let leagueId = document.getElementById('teamleague').value;
+    let stadium = document.getElementById('teamstadium').value;
+    let headCoach = document.getElementById('teamheadcoach').value;
+    let founded = document.getElementById('teamfounded').value;
     fetch('http://localhost:8739/team', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', },
         body: JSON.stringify(
-            { name: name })
+            {
+                name: name,
+                leagueId: leagueId,
+                stadium: stadium,
+                headCoach: headCoach,
+                founded: founded
+            })
     })
         .then(response => response)
         .then(data => {
