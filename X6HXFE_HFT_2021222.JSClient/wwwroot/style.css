@@ -52,3 +52,8 @@ th{
 table button{
     padding: 2px;
 }
+
+a{
+    font-size: 20px;
+    margin: 15px;
+}

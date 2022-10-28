@@ -18,9 +18,9 @@ function setupSignalR() {
     connection.on("PlayerDeleted", (user, message) => {
         getdata();
     });
-    //connection.on("PlayerUpdated", (user, message) => {
-    //    getdata();
-    //});
+    connection.on("PlayerUpdated", (user, message) => {
+        getdata();
+    });
 
     connection.onclose(async () => {
         await start();
